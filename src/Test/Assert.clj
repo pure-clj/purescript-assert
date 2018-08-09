@@ -2,13 +2,13 @@
 
 (defn assert' [message]
   (fn [success]
-    (fn []
+    (fn [& _]
       (if-not success
         (throw (RuntimeException. message))
         {}))))
 
 (defn checkThrows [f]
-  (fn []
+  (fn [& _]
     (try (f)
          false
          (catch Exception e
